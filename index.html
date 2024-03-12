@@ -107,16 +107,12 @@
           progressBarFull.style.width = 100 * progress + "%";
         })
           .then((unityInstance) => {
-            window.SetUsername = (username) => {
-              unityInstance.SendMessage("GameManager", "SetUsername", username);
+            window.SetSettings = (un, rn, ru) => {
+              unityInstance.SendMessage("GameManager", "SetUsername", un);
+              unityInstance.SendMessage("GameManager", "SetRedirectUrl", ru);
+              unityInstance.SendMessage("GameManager", "SetRoundsNumber", rn);
             };
-            window.SetRoundsNumber = (roundsNumber) => {
-              unityInstance.SendMessage(
-                "GameManager",
-                "SetRoundsNumber",
-                roundsNumber
-              );
-            };
+
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
               unityInstance.SetFullscreen(1);
